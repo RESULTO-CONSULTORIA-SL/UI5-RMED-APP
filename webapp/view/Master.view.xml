@@ -1,0 +1,72 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:smart="sap.ui.comp.smarttable"
+    xmlns:filter="sap.ui.comp.smartfilterbar"    
+	xmlns:smartVariantManagement="sap.ui.comp.smartvariants"
+    controllerName="com.resulto.prototype.controller.Master">
+    <f:DynamicPage id="dynamicPageId"
+		toggleHeaderOnTitleClick="false">
+        <f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Eventos de Medicación" />
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+        <f:content>
+            <HBox class="sapUiSmallMargin">
+            <smartVariantManagement:SmartVariantManagement
+                id="pageVariantId"
+                persistencyKey="PageVariantPKey"/>
+            </HBox>
+            <VBox>
+                <filter:SmartFilterBar
+                    id="smartFilterBar"
+                    entitySet="MedicationEventSet"
+                    smartVariant="pageVariantId"
+                    persistencyKey="SmartFilterPKey" enableBasicSearch="true">
+                    <filter:controlConfiguration>
+                        <filter:ControlConfiguration key="Status" visibleInAdvancedArea="true"/>
+                        <filter:ControlConfiguration key="EventDateTime"  visibleInAdvancedArea="true"/>
+                        <filter:ControlConfiguration key="PatientName"  visibleInAdvancedArea="true"/>
+                        <filter:ControlConfiguration key="RequestingUnit"  visibleInAdvancedArea="true"/>
+                        <filter:ControlConfiguration key="AssignedCart" visibleInAdvancedArea="true"/>
+                    </filter:controlConfiguration>
+                </filter:SmartFilterBar>
+                <smart:SmartTable
+                    id="smartTable_ResponsiveTable" 
+                    header="Eventos de Medicación"           
+                    smartFilterId="smartFilterBar"
+                    tableType="ResponsiveTable"
+                    editable="false"
+                    showRowCount="true"
+                    entitySet="MedicationEventSet"
+                    useVariantManagement="false"
+                    useTablePersonalisation="false"
+                    enableAutoBinding="true"
+                    enableExport="false"            
+                    persistencyKey="SmartTablePKey"
+                    showFullScreenButton="true"
+                    class="sapUiResponsiveContentPadding">
+                    <smart:customToolbar>
+                        <OverflowToolbar design="Transparent">
+                            <ToolbarSpacer/>
+                            <OverflowToolbarButton icon="sap-icon://edit" tooltip="Change the Status" press=".onChangeState"/>  
+                            <OverflowToolbarButton icon="sap-icon://activity-assigned-to-goal" tooltip="Assign Cart" press=".onAssignCart"/> 
+                            <OverflowToolbarButton icon="sap-icon://delete" tooltip="Delete Event" press=".onDelete"/> 
+                            <OverflowToolbarButton icon="sap-icon://cart" tooltip="Nav to Cart Page" press=".onNavCart"/>
+                        </OverflowToolbar>
+                    </smart:customToolbar>
+                    <Table id="idTable" mode="MultiSelect">
+                       <ColumnListItem
+                            id="Navegacion"
+                            type="Navigation"
+                            press="onListItemPress"/>
+                    </Table>
+                </smart:SmartTable>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

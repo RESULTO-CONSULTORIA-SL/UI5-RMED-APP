@@ -1,0 +1,19 @@
+specVersion: "4.0"
+metadata:
+  name: com.resulto.prototype
+type: application
+framework:
+  name: SAPUI5
+  version: "1.130.0"
+  libraries:
+    - name: sap.chart
+    - name: sap.f
+    - name: sap.m
+    - name: sap.ndc
+    - name: sap.suite.ui.microchart
+    - name: sap.ui.comp
+    - name: sap.ui.core
+    - name: sap.ui.layout
+    - name: sap.uxap
+    - name: sap.viz
+    - name: themelib_sap_horizon

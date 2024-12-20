@@ -1,0 +1,105 @@
+{
+    "_version": "1.1.0",
+
+	"sap.app": {
+		"id": "com.resulto.prototype",
+		"type": "application",
+		"applicationVersion": {
+			"version": "${version}"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/com/sap/MockData/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/recoletasMedMockMetadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "com.resulto.prototype.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "fcl"
+		},
+		"dependencies": {
+			"minUI5Version": "1.98.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.f": {},
+				"sap.uxap": {},
+				"sap.ui.comp": {},
+				"sap.viz": {}
+			}
+		},
+		"handleValidation": true,
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+
+		"config": {
+			"fullWidth": true
+		},
+
+		"routing": {
+				"config": {
+					"routerClass": "sap.f.routing.Router",
+					"viewType": "XML",
+					"viewPath": "com.resulto.prototype.view",
+					"controlId": "flc",
+					"controlAggregation": "beginColumnPages",
+					"async": true
+				},
+				"routes": [
+					{
+						"pattern": "",
+						"name": "Master",
+						"target": "Master"
+					},
+					{
+						"pattern": "Detail/{EventID}",
+						"name": "Detail",
+						"target":"Detail"
+					},
+					{
+						"pattern": "Cart",
+						"name": "Cart",
+						"target":"Cart"
+					}
+					
+				],
+				"targets": {
+					"Master": {
+						"viewName": "Master",
+						"viewId": "Master",
+						"viewLevel": 1
+					},
+					"Detail": {
+						"viewName": "Detail",
+						"viewId": "Detail",
+						"viewLevel": 2
+					},
+					"Cart": {
+						"viewName": "Cart",
+						"viewId": "Cart",
+						"viewLevel": 3
+					}
+				}
+			}
+        }
+    
+}

@@ -1,0 +1,32 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.f"
+    controllerName="com.resulto.prototype.controller.App"
+    displayBlock="true"
+    height="100%"
+    xmlns:m="sap.m">
+
+    <m:Page>
+        <m:customHeader>
+          <ShellBar
+            title="RMED prototype" secondTitle="A prototype application for RMED"
+            homeIcon="static/logo_sap.png"
+            showNavButton="{= ${/layout} === 'EndColumnFullScreen'}"
+              
+          >
+          </ShellBar>  
+        </m:customHeader>
+    <FlexibleColumnLayout
+       id="flc"
+       restoreFocusOnBackNavigation="true"
+       layout="{/layout}"
+       backgroundDesign="Translucent">
+       <beginColumnPages>
+          <mvc:XMLView id="master" viewName="com.resulto.prototype.view.Master"/>
+       </beginColumnPages>
+       <midColumnPages>
+         <mvc:XMLView id="detail" viewName="com.resulto.prototype.view.Detail"/>
+       </midColumnPages>
+      </FlexibleColumnLayout>
+    </m:Page>
+</mvc:View>

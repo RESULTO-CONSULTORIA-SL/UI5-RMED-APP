@@ -1,0 +1,42 @@
+{
+	"d": {
+		"results": [
+			{
+				"CartID": "Carro A",
+				"Name": "Carro Principal",
+				"Description": "Carro para dispensación en el área general",
+				"ValidityStart": "/Date(1698883200000)/",
+				"ValidityEnd": "/Date(1704067200000)/",
+				"Status": "Activo",
+				"AssignedEvents": 5
+			},
+			{
+				"CartID": "Carro B",
+				"Name": "Carro Secundario",
+				"Description": "Carro para Urgencias",
+				"ValidityStart": "/Date(1699488000000)/",
+				"ValidityEnd": "/Date(1704067200000)/",
+				"Status": "Activo",
+				"AssignedEvents": 3
+			},
+			{
+				"CartID": "Carro C",
+				"Name": "Carro Crítico",
+				"Description": "Carro para cuidados intensivos",
+				"ValidityStart": "/Date(1699488000000)/",
+				"ValidityEnd": "/Date(1704067200000)/",
+				"Status": "Activo",
+				"AssignedEvents": 2
+			},
+			{
+				"CartID": "Carro D",
+				"Name": "Carro Inactivo",
+				"Description": "Carro temporal fuera de servicio",
+				"ValidityStart": "/Date(1698883200000)/",
+				"ValidityEnd": "/Date(1699142400000)/",
+				"Status": "Inactivo",
+				"AssignedEvents": 0
+			}
+		]
+	}
+}

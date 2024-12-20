@@ -1,0 +1,110 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.uxap"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:m="sap.m"
+    controllerName="com.resulto.prototype.controller.Detail">
+    <ObjectPageLayout id="detailPage"  enableLazyLoading="true" isChildPage="true">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <heading>
+                      <m:Title text="Nombre del paciente:  {detail>PatientName}" wrapping="true"  class="SapUiSmallMarginEnd" />
+                </heading>
+                <expandedContent>
+                    <m:FormattedText htmlText="&lt;h5>Unidad peticionaria:  {detail>RequestingUnit}&lt;/h5> " />
+                </expandedContent>
+                
+                <snappedContent>
+                    <m:FormattedText htmlText="&lt;h5>Unidad peticionaria:  {detail>RequestingUnit}&lt;/h5> " />
+                </snappedContent>
+                
+                 
+                <navigationActions>
+                   <m:OverflowToolbarButton type="Transparent" icon="sap-icon://decline" press="handleClose" tooltip="Close Detail Page" 
+                   visible="{= ${/actionButtonsInfo/midColumn/closeColumn} !== null }"/>
+                  
+                </navigationActions>
+                <actions>
+                    <m:Button text="Guardar cambios" press=".onSaveChanges" />
+                    <m:Button text="Cambiar asignación a carro" press=".onChangeCart" />
+                    <m:Button text="Añadir nota" press=".onAddNote" />
+                </actions>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+        <sections>
+            <!-- Sección Información General -->
+            <ObjectPageSection title="Información General">
+                <ObjectPageSubSection>
+                    <layout:VerticalLayout>
+                        <m:FormattedText htmlText="&lt;strong>Medicación:&lt;/strong>" />
+                        <m:Text text="{detail>Medication}" />
+                        <m:FormattedText htmlText="&lt;strong>Paciente:&lt;/strong>" />
+                        <m:Text text="{detail>PatientName}" />
+                        <m:FormattedText htmlText="&lt;strong>Unidad Peticionaria:&lt;/strong>" />
+                        <m:Text text="{detail>RequestingUnit}" />
+                        <m:FormattedText htmlText="&lt;strong>Fecha y Hora:&lt;/strong>" />
+                        <m:Text
+                            text="{path: 'detail>EventDateTime',  formatter: '.formatDate' }" />
+                    </layout:VerticalLayout>
+                </ObjectPageSubSection>
+            </ObjectPageSection>
+            <!-- Sección Estado y Asignación -->
+            <ObjectPageSection title="Estado y Asignación">
+                <ObjectPageSubSection>
+                    <layout:VerticalLayout>
+                        <m:Label text="Estado actual:" />
+                        <m:Select selectedKey="{detail>Status}">
+                            <m:items>
+                                <core:Item text="Pendiente" key="Pendiente" />
+                                <core:Item text="En preparación" key="EnPreparacion" />
+                                <core:Item text="Listo" key="Listo" />
+                                <core:Item text="Dispensado" key="Dispensado" />
+                            </m:items>
+                        </m:Select>
+                        <m:Label text="Carro asignado:" />
+                        <m:Select selectedKey="{detail>AssignedCart}">
+                            <m:items>
+                                <core:Item text="Carro A" key="CarroA" />
+                                <core:Item text="Carro B" key="CarroB" />
+                                <core:Item text="Carro C" key="CarroC" />
+                            </m:items>
+                        </m:Select>
+                    </layout:VerticalLayout>
+                </ObjectPageSubSection>
+            </ObjectPageSection>
+            <!-- Sección Notas -->
+            <ObjectPageSection title="Notas">
+                <ObjectPageSubSection>
+                    <layout:VerticalLayout>
+                        <m:Label text="Añadir nota:" />
+                        <m:TextArea value="{detail>Notes}" placeholder="Escribe tus comentarios aquí..." width="100%" />
+                    </layout:VerticalLayout>
+                </ObjectPageSubSection>
+            </ObjectPageSection>
+            <!-- Sección Historial (Opcional) -->
+            <ObjectPageSection title="Historial">
+                <ObjectPageSubSection>
+                    <layout:VerticalLayout>
+                        <m:Table>
+                            <m:columns>
+                                <m:Column><m:Text text="Fecha y Hora" /></m:Column>
+                                <m:Column><m:Text text="Estado" /></m:Column>
+                                <m:Column><m:Text text="Carro Asignado" /></m:Column>
+                            </m:columns>
+                            <m:items>
+                                <m:ColumnListItem>
+                                    <m:cells>
+                                         <m:Text text="{path: 'detail>EventDateTime',  formatter: '.formatDate' }" />
+                                        <m:Text text="{detail>Status}" />
+                                        <m:Text text="{detail>AssignedCart}" />
+                                    </m:cells>
+                                </m:ColumnListItem>
+                            </m:items>
+                        </m:Table>
+                    </layout:VerticalLayout>
+                </ObjectPageSubSection>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>

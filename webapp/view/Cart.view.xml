@@ -1,0 +1,61 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:smart="sap.ui.comp.smarttable"
+    xmlns:filter="sap.ui.comp.smartfilterbar"    
+	xmlns:smartVariantManagement="sap.ui.comp.smartvariants"
+    controllerName="com.resulto.prototype.controller.Cart">
+    <f:DynamicPage id="dynamicPageId"
+		toggleHeaderOnTitleClick="false">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Gestión de Carros"/>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:content>
+            <HBox class="sapUiSmallMargin">
+                <smartVariantManagement:SmartVariantManagement
+                    id="pageVariantId"
+                    persistencyKey="PageVariantPKey"/>
+            </HBox>
+            <VBox>
+                <filter:SmartFilterBar id="smartFilterBar"
+                    entitySet="CartSet"
+                    smartVariant="pageVariantId"
+                    persistencyKey="SmartFilterPKey" enableBasicSearch="true">
+                    <filter:controlConfiguration>
+                        <filter:ControlConfiguration key="CartID" visibleInAdvancedArea="true"/>
+                        <filter:ControlConfiguration key="Status" visibleInAdvancedArea="true"/>
+                    </filter:controlConfiguration>
+                </filter:SmartFilterBar>
+                <smart:SmartTable
+                    id="smartTableCarts"
+                    tableType="ResponsiveTable"
+                    smartFilterId="smartFilterBar"
+                    entitySet="CartSet"
+                    enableExport="false"
+                    useVariantManagement="true"
+                    enableAutoBinding="true"
+                    persistencyKey="SmartTablePKey"
+                    useTablePersonalisation="true"
+                    header="Gestión de Carros">
+                    <smart:customToolbar>
+                        <OverflowToolbar design="Transparent">
+                            <ToolbarSpacer/>
+                            <OverflowToolbarButton icon="sap-icon://create-form" tooltip="Create Cart" press=".onCreateCart"/>
+                            <OverflowToolbarButton icon="sap-icon://delete" tooltip="Delete Cart" press=".onDelete"/>
+                            <OverflowToolbarButton icon="sap-icon://activate" tooltip="Change Cart Status" press=".onActivate"/>
+                            <OverflowToolbarButton icon="sap-icon://close-command-field" tooltip="Back to Master Page" press=".onNavMaster"/>
+                        </OverflowToolbar>
+                    </smart:customToolbar>
+                    <Table id="idTable"  mode="MultiSelect">
+                    </Table>
+                </smart:SmartTable>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

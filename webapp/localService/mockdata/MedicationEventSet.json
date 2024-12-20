@@ -1,0 +1,33 @@
+{
+	"d": {
+		"results": [
+			{
+				"EventID": "E001",
+				"PatientName": "Juan Pérez",
+				"Medication": "Paracetamol 500mg",
+				"RequestingUnit": "Unidad de Enfermería 1",
+				"Status": "Pendiente",
+				"AssignedCart": "Carro A",
+				"EventDateTime": "\/Date(1700650200000)\/"
+			},
+			{
+				"EventID": "E002",
+				"PatientName": "María López",
+				"Medication": "Ibuprofeno 200mg",
+				"RequestingUnit": "Unidad de Urgencias",
+				"Status": "En preparación",
+				"AssignedCart": "Carro B",
+				"EventDateTime": "\/Date(1700653800000)\/"
+			},
+			{
+				"EventID": "E003",
+				"PatientName": "Carlos Fernández",
+				"Medication": "Aspirina 100mg",
+				"RequestingUnit": "Unidad de Cuidados Intensivos",
+				"Status": "Listo para dispensar",
+				"AssignedCart": "Carro C",
+				"EventDateTime": "\/Date(1700657400000)\/"
+			}
+		]
+	}
+}
